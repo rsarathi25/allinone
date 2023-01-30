@@ -1,0 +1,9 @@
+    - name: checking precheck
+      command: uptime
+      register: san
+    - debug:
+        var :  san.stdout_lines
+    - name: Saving data to local file
+      copy:
+        content:  "{{  san.stdout_lines  }}"
+        dest: /tmp/precheck_output
